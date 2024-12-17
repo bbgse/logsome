@@ -1,12 +1,13 @@
-# Build
-dist
+# Build, test, and coverage
+dist/
+coverage/
 
 # Node
-node_modules
+node_modules/
 
 # Editor
-.idea
-.vscode
+.idea/
+.vscode/
 
 # Misc
 .DS_Store
