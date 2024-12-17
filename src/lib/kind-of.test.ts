@@ -190,7 +190,6 @@ describe("kindOf", () => {
   describe("bigint values", () => {
     it("should handle bigint values", () => {
       expect(kindOf(BigInt(9007199254740991))).toBe("bigint");
-      // @ts-expect-error BigInt literals are not available when targeting lower than ES2020.
       expect(kindOf(9007199254740991n)).toBe("bigint");
     });
   });
