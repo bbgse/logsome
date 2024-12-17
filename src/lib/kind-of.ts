@@ -74,7 +74,6 @@ export function kindOf(value?: unknown): KindOfType | (string & {}) {
 
   const ctor = getCtorName(value);
   switch (ctor) {
-    case "Symbol": return "symbol";
     case "Promise": return "promise";
 
     case "WeakMap": return "weakmap";
@@ -95,18 +94,15 @@ export function kindOf(value?: unknown): KindOfType | (string & {}) {
     case "Float64Array": return "float64array";
   }
 
-  // Non-plain objects
-  const toStringResult = toString(value);
-
-  // Handle iterators and other special cases
-  switch (toStringResult) {
+  const str = toString(value);
+  switch (str) {
     case "[object Map Iterator]": return "mapiterator";
     case "[object Set Iterator]": return "setiterator";
     case "[object String Iterator]": return "stringiterator";
     case "[object Array Iterator]": return "arrayiterator";
   }
 
-  return toStringResult.slice(8, -1).toLowerCase().replace(/\s/g, "") as KindOfType;
+  return str.slice(8, -1).toLowerCase().replace(/\s/g, "") as KindOfType;
 }
 
 function toString(value: unknown) {
