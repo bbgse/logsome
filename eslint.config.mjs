@@ -13,4 +13,5 @@ export default antfu({
     "node/prefer-global/url-search-params": "off",
     "antfu/if-newline": "off",
   },
+  type: "lib",
 });

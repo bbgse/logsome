@@ -105,14 +105,14 @@ export function kindOf(value?: unknown): KindOfType | (string & {}) {
   return str.slice(8, -1).toLowerCase().replace(/\s/g, "") as KindOfType;
 }
 
-function toString(value: unknown) {
+function toString(value: unknown): string {
   return Object.prototype.toString.call(value);
 }
 
-function getCtorName(value: unknown) {
+function getCtorName(value: unknown): string | undefined {
   return typeof value === "object" && value !== null ? value.constructor.name : undefined;
 }
 
-function isPlainObject(value: unknown) {
+function isPlainObject(value: unknown): boolean {
   return typeof value === "object" && value !== null && toString(value) === "[object Object]";
 }
