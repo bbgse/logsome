@@ -1,3 +1,8 @@
+/**
+ * Based on the `kind-of` package by Jon Schlinkert.
+ * @see https://github.com/jonschlinkert/kind-of
+ */
+
 import {
   isArgumentsObject,
   isDate,
@@ -7,9 +12,44 @@ import {
   isRegExp,
 } from "node:util/types";
 
-type KindOfType = string;
+type KindOfType =
+  | "null"
+  | "undefined"
+  | "boolean"
+  | "string"
+  | "number"
+  | "symbol"
+  | "bigint"
+  | "date"
+  | "error"
+  | "regexp"
+  | "promise"
+  | "function"
+  | "generatorfunction"
+  | "array"
+  | "buffer"
+  | "arguments"
+  | "object"
+  | "generator"
+  | "map"
+  | "set"
+  | "weakmap"
+  | "weakset"
+  | "int8array"
+  | "uint8array"
+  | "uint8clampedarray"
+  | "int16array"
+  | "uint16array"
+  | "int32array"
+  | "uint32array"
+  | "float32array"
+  | "float64array"
+  | "mapiterator"
+  | "setiterator"
+  | "stringiterator"
+  | "arrayiterator";
 
-export function kindOf(value?: unknown): KindOfType {
+export function kindOf(value?: unknown): KindOfType | (string & {}) {
   if (value === null) return "null";
   if (value === undefined) return "undefined";
 
